@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Random Bookmark Homepage",
-  "version": "1.1",
-  "description": "Opens a random bookmark as your homepage each day with a preview",
+  "version": "1.2",
+  "description": "Opens a random bookmark as your homepage each day with controls in the toolbar",
   "permissions": ["bookmarks", "storage"],
   "background": {
     "scripts": ["background.js"],
@@ -10,5 +10,8 @@
   },
   "chrome_url_overrides": {
     "newtab": "newtab.html"
+  },
+  "browser_action": {
+    "default_popup": "popup.html"
   }
 }

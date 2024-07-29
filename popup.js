@@ -21,6 +21,7 @@ function loadCurrentBookmark() {
 document.getElementById("new-random").addEventListener("click", () => {
   chrome.runtime.sendMessage({ action: "getNewRandom" }, (response) => {
     if (response && response.bookmark) {
+      console.log("New random bookmark set:", response.bookmark);
       displayBookmarkInfo(response.bookmark);
     }
   });
@@ -37,7 +38,11 @@ document.getElementById("open-current").addEventListener("click", () => {
 document
   .getElementById("interval-select")
   .addEventListener("change", (event) => {
-    chrome.storage.local.set({ refreshInterval: event.target.value });
+    const newInterval = event.target.value;
+    chrome.storage.local.set({ refreshInterval: newInterval }, () => {
+      console.log("Refresh interval updated to:", newInterval);
+      chrome.runtime.sendMessage({ action: "updateHomepage" });
+    });
   });
 
 chrome.storage.local.get("refreshInterval", (result) => {

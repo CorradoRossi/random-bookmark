@@ -54,6 +54,13 @@ function updateHomepage() {
             chrome.storage.local.set({
               lastUpdated: now,
               currentHomepage: randomBookmark,
+            }, () => {
+              // Update the current tab with the new URL
+              chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+                if (tabs[0]) {
+                  chrome.tabs.update(tabs[0].id, {url: randomBookmark.url});
+                }
+              });
             });
           }
         });
@@ -76,9 +83,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           lastUpdated: Date.now(),
           currentHomepage: randomBookmark,
         });
+        console.log("New random bookmark set:", randomBookmark);
         sendResponse({ bookmark: randomBookmark });
       }
     });
     return true; // Indicates we will sendResponse asynchronously
+  } else if (request.action === "updateHomepage") {
+    updateHomepage();
   }
 });

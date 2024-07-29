@@ -1,4 +1,5 @@
 chrome.storage.local.get("currentHomepage", (result) => {
+  console.log("currentHomepage", result);
   if (result.currentHomepage) {
     window.location.href = result.currentHomepage;
   } else {

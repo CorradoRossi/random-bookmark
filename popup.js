@@ -1,4 +1,3 @@
-// popup.js
 function displayBookmarkInfo(bookmark) {
   const bookmarkInfo = document.getElementById("bookmark-info");
   bookmarkInfo.innerHTML = `
@@ -11,14 +10,7 @@ function displayBookmarkInfo(bookmark) {
 function loadCurrentBookmark() {
   chrome.storage.local.get("currentHomepage", (result) => {
     if (result.currentHomepage) {
-      chrome.bookmarks.search({ url: result.currentHomepage }, (bookmarks) => {
-        if (bookmarks.length > 0) {
-          displayBookmarkInfo(bookmarks[0]);
-        } else {
-          document.getElementById("bookmark-info").innerHTML =
-            "<p>Error: Bookmark not found.</p>";
-        }
-      });
+      displayBookmarkInfo(result.currentHomepage);
     } else {
       document.getElementById("bookmark-info").innerHTML =
         "<p>No bookmarks found. Please add some bookmarks and reload.</p>";
@@ -37,9 +29,20 @@ document.getElementById("new-random").addEventListener("click", () => {
 document.getElementById("open-current").addEventListener("click", () => {
   chrome.storage.local.get("currentHomepage", (result) => {
     if (result.currentHomepage) {
-      chrome.tabs.create({ url: result.currentHomepage });
+      chrome.tabs.create({ url: result.currentHomepage.url });
     }
   });
+});
+
+document
+  .getElementById("interval-select")
+  .addEventListener("change", (event) => {
+    chrome.storage.local.set({ refreshInterval: event.target.value });
+  });
+
+chrome.storage.local.get("refreshInterval", (result) => {
+  document.getElementById("interval-select").value =
+    result.refreshInterval || "daily";
 });
 
 loadCurrentBookmark();

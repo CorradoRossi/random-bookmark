@@ -48,4 +48,23 @@ function updateHomepage() {
   });
 }
 
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === "getNewRandom") {
+    getRandomBookmark((randomBookmark) => {
+      if (randomBookmark) {
+        chrome.bookmarks.search({url: randomBookmark}, (bookmarks) => {
+          if (bookmarks.length > 0) {
+            chrome.storage.local.set({
+              lastUpdated: Date.now(),
+              currentHomepage: randomBookmark
+            });
+            sendResponse({bookmark: bookmarks[0]});
+          }
+        });
+      }
+    });
+    return true;  // Indicates we will sendResponse asynchronously
+  }
+});
+
 chrome.runtime.onStartup.addListener(updateHomepage);

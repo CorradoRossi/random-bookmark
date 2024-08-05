@@ -1,9 +1,9 @@
-function displayBookmarkInfo(bookmark) {
+function displayBookmarkInfo(currentHomepage) {
   const bookmarkInfo = document.getElementById("bookmark-info");
-  if (bookmark) {
+  if (currentHomepage) {
   bookmarkInfo.innerHTML = `
     <p><strong>Current bookmark:</strong></p>
-    <p><a href="${bookmark.currentHomepage}" target="_blank">${bookmark.currentHomepage}</a></p>
+    <p><a href="${currentHomepage.currentHomepage}" target="_blank">${currentHomepage.currentHomepage}</a></p>
   `;
   };
 }
@@ -22,7 +22,7 @@ function loadCurrentBookmark() {
 document.getElementById("new-random").addEventListener("click", () => {
   chrome.runtime.sendMessage({ action: "getNewRandom" }, (response) => {
     if (response && response.currentHomepage) {
-      displayBookmarkInfo(response.currentHomepage);
+      displayBookmarkInfo(response);
     }
   });
 });
@@ -54,5 +54,4 @@ chrome.storage.local.get(
   }
 );
 
-displayBookmarkInfo();
 loadCurrentBookmark();

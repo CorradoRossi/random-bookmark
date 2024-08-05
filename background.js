@@ -58,7 +58,7 @@ function updateHomepage() {
               // Update the current tab with the new URL
               chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
                 if (tabs[0]) {
-                  chrome.tabs.update(tabs[0].id, {url: randomBookmark.url});
+                  chrome.tabs.update(tabs[0].id, {url: randomBookmark});
                 }
               });
             });

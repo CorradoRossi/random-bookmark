@@ -3,7 +3,6 @@ function displayBookmarkInfo(bookmark) {
   if (bookmark) {
   bookmarkInfo.innerHTML = `
     <p><strong>Current bookmark:</strong></p>
-    <p>${bookmark.currentHomepage}</p>
     <p><a href="${bookmark.currentHomepage}" target="_blank">${bookmark.currentHomepage}</a></p>
   `;
   };

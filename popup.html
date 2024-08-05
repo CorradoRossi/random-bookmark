@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Random Bookmark Homepage</title>
+  <title>Get Random Bookmark</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
+    a {
+      color: #D26237;
+    }
     body {
       width: 300px;
       padding: 20px;
       font-family: 'Roboto', sans-serif;
-      background-color: #f5f5f5;
-      color: #333;
+      background-color: #f1f1f1;
+      color: #000000;
     }
     h2 {
       margin-top: 0;
-      color: #2c3e50;
+      color: #000000;
       font-weight: 500;
     }
     #bookmark-info {
@@ -21,7 +24,7 @@
       border-radius: 8px;
       padding: 15px;
       margin: 15px 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
     #bookmark-info p {
       margin: 5px 0;
@@ -32,15 +35,16 @@
       padding: 10px;
       margin: 10px 0;
       border: none;
-      border-radius: 5px;
-      background-color: #3498db;
+      border-radius: 8px;
+      background-color: #D26237;
       color: white;
       font-size: 14px;
       cursor: pointer;
       transition: background-color 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
     button:hover {
-      background-color: #2980b9;
+      background-color: #D95F3A;
     }
     #refresh-interval {
       margin-top: 15px;
@@ -48,15 +52,16 @@
     }
     select {
       width: 100%;
-      padding: 5px;
+      padding: 8px;
       margin-top: 5px;
-      border-radius: 5px;
-      border: 1px solid #bdc3c7;
+      border-radius: 8px;
+      border: 0px solid #bdc3c7;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
   </style>
 </head>
 <body>
-  <h2>Random Bookmark Homepage</h2>
+  <h2>Get Random Bookmark</h2>
   <div id="bookmark-info"></div>
   <button id="new-random">Get New Random Bookmark</button>
   <button id="open-current">Open Current Bookmark</button>

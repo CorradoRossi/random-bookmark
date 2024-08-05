@@ -84,7 +84,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           currentHomepage: randomBookmark,
         });
         console.log("New random bookmark set:", randomBookmark);
-        sendResponse({ bookmark: randomBookmark });
+        sendResponse({ currentHomepage: randomBookmark });
       }
     });
     return true; // Indicates we will sendResponse asynchronously

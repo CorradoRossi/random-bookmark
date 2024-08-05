@@ -5,7 +5,7 @@ function getRandomBookmark(callback) {
     function traverseBookmarks(nodes) {
       for (let node of nodes) {
         if (node.url) {
-          bookmarks.push(node);
+          bookmarks.push(node.url);
         }
         if (node.children) {
           traverseBookmarks(node.children);

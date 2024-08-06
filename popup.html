@@ -19,6 +19,14 @@
       color: #000000;
       font-weight: 500;
     }
+    .header {
+      display: flex;
+      align-items: center;
+    }
+    .header h2 {
+      margin-left: 6px;
+      margin-top: 14px;
+    }
     #bookmark-info {
       background-color: white;
       border-radius: 8px;
@@ -66,7 +74,10 @@
   </style>
 </head>
 <body>
-  <h2>Get Random Bookmark</h2>
+  <div class="header">
+    <img src="images/icon128.png" alt="favicon" width="40" height="40">
+    <h2>Get Random Bookmark</h2>
+  </div>
   <div id="bookmark-info"></div>
   <button id="new-random">Get New Random Bookmark</button>
   <button id="open-current">Open Current Bookmark</button>

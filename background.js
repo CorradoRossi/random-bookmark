@@ -76,6 +76,7 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.runtime.onStartup.addListener(updateHomepage);
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  console.log("request", request);
   if (request.action === "getNewRandom") {
     getRandomBookmark((randomBookmark) => {
       if (randomBookmark) {

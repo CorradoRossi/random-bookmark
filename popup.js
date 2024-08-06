@@ -2,7 +2,6 @@ function displayBookmarkInfo(currentHomepage) {
   const bookmarkInfo = document.getElementById("bookmark-info");
   if (currentHomepage) {
   bookmarkInfo.innerHTML = `
-    <p><strong>Current bookmark:</strong></p>
     <p><a href="${currentHomepage.currentHomepage}" target="_blank">${currentHomepage.currentHomepage}</a></p>
   `;
   };

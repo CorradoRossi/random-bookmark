@@ -9,14 +9,14 @@
     }
     body {
       width: 300px;
-      padding: 20px 20px 0px 20px;
+      padding: 5px 20px 0px 20px;
       font-family: 'Roboto', sans-serif;
       background-color: #f1f1f1;
-      color: #000000;
+      color: #030303;
     }
     h2 {
       margin-top: 0;
-      color: #000000;
+      color: #030303;
       font-weight: 500;
     }
     .header {
@@ -27,12 +27,17 @@
       margin-left: 6px;
       margin-top: 14px;
     }
+    .current-bookmark {
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
     #bookmark-info {
       background-color: white;
-      border-radius: 8px;
+      border-radius: 5px;
       padding: 15px;
-      margin: 15px 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      margin: 0px 0px 15px 0px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     #bookmark-info p {
       margin: 5px 0;
@@ -43,13 +48,14 @@
       padding: 10px;
       margin: 10px 0;
       border: none;
-      border-radius: 8px;
+      border-radius: 5px;
       background-color: #D26237;
       color: white;
       font-size: 14px;
+      font-weight: 500;
       cursor: pointer;
       transition: background-color 0.3s;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     button:hover {
       background-color: #D95F3A;
@@ -57,27 +63,32 @@
     #refresh-interval {
       margin-top: 15px;
       font-size: 14px;
+      font-weight: 500;
     }
     select {
       width: 100%;
       padding: 8px;
       margin-top: 5px;
-      border-radius: 8px;
+      border-radius: 5px;
       border: 0px solid #bdc3c7;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      outline: none;
     }
     #contact {
-      color: #bdc3c7;
+      color: #2F2D2C;
       margin-top: 25px;
       font-size: 12px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
   <div class="header">
-    <img src="images/icon128.png" alt="favicon" width="40" height="40">
-    <h2>Get Random Bookmark</h2>
+    <a href="https://rssi.dev" target="_blank">
+      <img src="images/get-random-bookmark.png" alt="logo" width="283" height="60">
+    </a>
   </div>
+  <p class="current-bookmark">Current bookmark:</p>
   <div id="bookmark-info"></div>
   <button id="new-random">Get New Random Bookmark</button>
   <button id="open-current">Open Current Bookmark</button>

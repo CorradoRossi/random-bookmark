@@ -2,7 +2,12 @@ function displayBookmarkInfo(currentHomepage) {
   const bookmarkInfo = document.getElementById("bookmark-info");
   if (currentHomepage) {
   bookmarkInfo.innerHTML = `
-    <p><a href="${currentHomepage.currentHomepage}" target="_blank">${currentHomepage.currentHomepage}</a></p>
+    <p><a href="${
+      currentHomepage.currentHomepage
+    }" target="_blank">${currentHomepage.currentHomepage.replace(
+    /(^\w+:|^)\/\//,
+    ""
+  )}</a></p>
   `;
   };
 }

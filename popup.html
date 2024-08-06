@@ -1,110 +1,150 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Get Random Bookmark</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    a {
-      color: #D26237;
-    }
-    body {
-      width: 300px;
-      padding: 10px 25px 5px 25px;
-      font-family: 'Roboto', sans-serif;
-      background-color: #f1f1f1;
-      color: #030303;
-      margin: 0;
-      border: 3px solid #D95F3A;
-    }
-    h2 {
-      margin-top: 0;
-      color: #030303;
-      font-weight: 500;
-    }
-    .header {
-      display: flex;
-      align-items: center;
-    }
-    .header h2 {
-      margin-left: 6px;
-      margin-top: 14px;
-    }
-    .current-bookmark {
-      font-weight: 500;
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
-    #bookmark-info {
-      background-color: white;
-      border-radius: 5px;
-      padding: 15px;
-      margin: 0px 0px 15px 0px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    #bookmark-info p {
-      margin: 5px 0;
-      word-break: break-all;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 5px;
-      background-color: #D26237;
-      color: white;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    button:hover {
-      background-color: #D95F3A;
-    }
-    #refresh-interval {
-      margin-top: 15px;
-      font-size: 14px;
-      font-weight: 500;
-    }
-    select {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border-radius: 5px;
-      border: 0px solid #bdc3c7;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      outline: none;
-    }
-    #contact {
-      color: #2F2D2C;
-      margin-top: 25px;
-      font-size: 12px;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-  <div class="header">
-    <a href="https://rssi.dev" target="_blank">
-      <img src="images/get-random-bookmark.png" alt="logo" width="283" height="60">
-    </a>
-  </div>
-  <p class="current-bookmark">Current bookmark:</p>
-  <div id="bookmark-info"></div>
-  <button id="new-random">Get New Random Bookmark</button>
-  <button id="open-current">Open Current Bookmark</button>
-  <div id="refresh-interval">
-    <label for="interval-select">Refresh Interval:</label>
-    <select id="interval-select">
-      <option value="everyNewTab">Every New Tab</option>
-      <option value="daily">Daily</option>
-      <option value="weekly">Weekly</option>
-    </select>
-  </div>
-  <div id="contact">
-    <p>Made with <span style="color: #D95F3A;">&#x2665;</span> by <a href="https://rssi.dev" target="_blank">metastash</a></p>
-  </div>
-  <script src="popup.js"></script>
-</body>
+  <head>
+    <title>Get Random Bookmark</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      a {
+        color: #d26237;
+      }
+      body {
+        width: 300px;
+        padding: 10px 25px 5px 25px;
+        font-family: "Roboto", sans-serif;
+        background-color: #f1f1f1;
+        color: #030303;
+        margin: 0;
+        border: 3px solid #d95f3a;
+      }
+      h2 {
+        margin-top: 0;
+        color: #030303;
+        font-weight: 500;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+      }
+      .header h2 {
+        margin-left: 6px;
+        margin-top: 14px;
+      }
+      .current-bookmark {
+        font-weight: 500;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      #bookmark-info {
+        background-color: white;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 0px 0px 15px 0px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      #bookmark-info p {
+        margin: 5px 0;
+        word-break: break-all;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        background-color: #d26237;
+        color: white;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      button:hover {
+        background-color: #d95f3a;
+      }
+      #refresh-interval {
+        margin-top: 15px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .select-container {
+        appearance: none;
+        position: relative;
+      }
+      .select-container::before,
+      .select-container::after {
+        --size: 0.3rem;
+        position: absolute;
+        content: "";
+        right: 1rem;
+        pointer-events: none;
+      }
+
+      .select-container::before {
+        border-left: var(--size) solid transparent;
+        border-right: var(--size) solid transparent;
+        border-bottom: var(--size) solid #d95f3a;
+        top: 40%;
+      }
+
+      .select-container::after {
+        border-left: var(--size) solid transparent;
+        border-right: var(--size) solid transparent;
+        border-top: var(--size) solid #d95f3a;
+        top: 55%;
+      }
+      select {
+        appearance: none;
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 0px solid #bdc3c7;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        outline: none;
+      }
+      #contact {
+        color: #2f2d2c;
+        margin-top: 25px;
+        font-size: 12px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="https://rssi.dev" target="_blank">
+        <img
+          src="images/get-random-bookmark.png"
+          alt="logo"
+          width="283"
+          height="60"
+        />
+      </a>
+    </div>
+    <p class="current-bookmark">Current bookmark:</p>
+    <div id="bookmark-info"></div>
+    <button id="new-random">Get New Random Bookmark</button>
+    <button id="open-current">Open Current Bookmark</button>
+    <div id="refresh-interval">
+      <label for="interval-select">Refresh Interval:</label>
+      <div class="select-container">
+        <select id="interval-select">
+          <option value="everyNewTab">Every New Tab</option>
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
+        </select>
+      </div>
+    </div>
+    <div id="contact">
+      <p>
+        Made with <span style="color: #d95f3a">&#x2665;</span> by
+        <a href="https://rssi.dev" target="_blank">metastash</a>
+      </p>
+    </div>
+    <script src="popup.js"></script>
+  </body>
 </html>

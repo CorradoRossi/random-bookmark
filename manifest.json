@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Random Bookmark Homepage",
+  "name": "Get Random Bookmark",
   "version": "1.3",
-  "description": "Opens a random bookmark as your homepage with customizable refresh intervals",
+  "description": "Opens a random bookmark whenever you open a new tab",
   "permissions": ["bookmarks", "storage", "tabs"],
   "optional_permissions": [],
   "host_permissions": [],
